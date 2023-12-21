@@ -19,6 +19,9 @@ class Registration extends CI_Controller {
 	// ================================================================================
 	// ================================================================================
 
+	public function test(){
+		$this->load->view('registration/success');
+	}
 
 	public function index() {
 		redirect('/register');

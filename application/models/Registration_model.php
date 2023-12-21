@@ -4,7 +4,7 @@
 
         function __construct(){
             parent::__construct();
-            $this->extremedeals= $this->load->database('extremedeals', TRUE);
+            $this->extremedeals= $this->load->database('default', TRUE);
             $this->load->helper(array('cookie', 'url')); 
             $this->load->library('user_agent');
         }
@@ -104,7 +104,7 @@
             $ch = curl_init();
             // https://dev.megabots.app/tvouch332/api/release
             // https://evoucher.totalretailrewards.com/api/release
-            curl_setopt($ch, CURLOPT_URL, "https://dev.megabots.app/tvouch332/api/release");
+            curl_setopt($ch, CURLOPT_URL, "https://dev.megabots.app/total_voucher/api/release");
             curl_setopt($ch, CURLOPT_POST, 1);
             $time = time();
             // $batch = 67;

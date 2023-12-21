@@ -118,11 +118,11 @@
                   <span class="span7"><b>P15</b></span>
                   <span class="span8"><b>P15</b></span>
                 </div> -->
-                <img class="img-wheel" src="<?= base_url()?>/assets/img/wheel/Wheel_1.png">
+                <img class="img-wheel" src="<?= base_url()?>/assets/img/wheel/Updated wheel.png">
               </div>
 
               
-              <button class="spin" onclick="myfunction()">GO</button>
+              <button class="spin" onclick="spinFunction()">GO</button>
               <div class="spin-pointer">   
               </div>
               
@@ -166,6 +166,8 @@
               <img class="img-voucher" src="<?= base_url()?>/assets/img/wheel/20.png">
             <?php elseif($voucher_win == "P25"): ?>
               <img class="img-voucher" src="<?= base_url()?>/assets/img/wheel/25.png">
+            <?php elseif($voucher_win == "P50"): ?>
+              <img class="img-voucher" src="<?= base_url()?>/assets/img/wheel/50.png">  
             <?php endif ?>
             <input value="Ok" id="submit" data-bs-dismiss="modal" aria-label="Close"/>
             <!-- =========================================================================== -->
@@ -190,12 +192,12 @@
 
   <script>
 
-    var spinCount = 0;
-    function myfunction() {
-      if (spinCount > 3) {
-        alert("No more Spins");
-        return false;
-      }
+    var spinCount = 6;
+    function spinFunction() {
+      // if (spinCount > 3) {
+      //   alert("No more Spins");
+      //   return false;
+      // }
       var x = 1024; //min value
       var y = 9999; // max value
       document.getElementById("output").innerHTML = ""; 
@@ -209,18 +211,22 @@
       // SPAN 7 = (360 * 3) + (45 * 7); CHECK 15
       // SPAN 8 = (360 * 3) + (45 * 3); CHECK 15
 
-      switch("<?= $voucher_win ?>") {
+
+      switch("<?= $voucher_win?>") { 
         case "P10":
-          var deg = (360 * 3) + (45 * 4); 
+          var deg = (360 * 3) + (36 * 5); 
           break;
         case "P15":
-          var deg = (360 * 3) + (45 * 7); 
+          var deg = (360 * 3) + (36 * 4); 
           break;
         case "P20":
-          var deg = (360 * 3) + (45 * 2);
+          var deg = (360 * 3) + (36 * 3);
           break;
         case "P25":
-          var deg = (360 * 3) + (45 * 1);
+          var deg = (360 * 3) + (36 * 2);
+          break;
+        case "P50":
+          var deg = (360 * 3) + (36 * 1);
           break;
         default:
       }

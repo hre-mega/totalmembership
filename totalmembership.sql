@@ -16,8 +16,8 @@
 
 
 -- Dumping database structure for [dev]_totalmembership
-CREATE DATABASE IF NOT EXISTS `[dev]_totalmembership` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `[dev]_totalmembership`;
+CREATE DATABASE IF NOT EXISTS `totalmembership` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `totalmembership`;
 
 -- Dumping structure for table [dev]_totalmembership.membership_agents
 CREATE TABLE IF NOT EXISTS `membership_agents` (
@@ -340,35 +340,35 @@ INSERT INTO `stations` (`id`, `station_name`, `station_code`, `status`, `system_
 	(115, 'FBT- Bacong', '22D72', 1, '', '09695201111', '', '', '2023-03-23 15:52:26');
 
 -- Dumping structure for trigger [dev]_totalmembership.details_after_insert
-SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_UNSIGNED_SUBTRACTION';
-DELIMITER //
-CREATE TRIGGER `details_after_insert` BEFORE INSERT ON `membership_details` FOR EACH ROW BEGIN
-	INSERT INTO `[dev]_tvouch332`.details
-	(`md5`, `fname`, `lname`, `email`, `address`, `bday`)
-	VALUES (NEW.md5, NEW.fname, NEW.lname, NEW.email, NEW.address, NEW.bday)
-	ON DUPLICATE KEY UPDATE `md5`= `md5`;
-END//
-DELIMITER ;
-SET SQL_MODE=@OLDTMP_SQL_MODE;
+-- SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_UNSIGNED_SUBTRACTION';
+-- DELIMITER //
+-- CREATE TRIGGER `details_after_insert` BEFORE INSERT ON `membership_details` FOR EACH ROW BEGIN
+-- 	INSERT INTO `[dev]_tvouch332`.details
+-- 	(`md5`, `fname`, `lname`, `email`, `address`, `bday`)
+-- 	VALUES (NEW.md5, NEW.fname, NEW.lname, NEW.email, NEW.address, NEW.bday)
+-- 	ON DUPLICATE KEY UPDATE `md5`= `md5`;
+-- END//
+-- DELIMITER ;
+-- SET SQL_MODE=@OLDTMP_SQL_MODE;
 
--- Dumping structure for trigger [dev]_totalmembership.entries_after_insert
-SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_UNSIGNED_SUBTRACTION';
-DELIMITER //
-CREATE TRIGGER `entries_after_insert` BEFORE INSERT ON `membership_entries` FOR EACH ROW BEGIN
-	INSERT INTO `[dev]_tvouch332`.bdaysend (`promo_id`, `mobile`, `detail_id`)
-	SELECT 2, NEW.mobile, id FROM `[dev]_tvouch332`.details,
-	(
-		SELECT `md5` FROM `[dev]_totalmembership`.membership_details
-		WHERE `[dev]_totalmembership`.membership_details.id = NEW.detail_id
-	) te
-	WHERE `[dev]_tvouch332`.details.`md5` = te.`md5`
-	ON DUPLICATE KEY UPDATE `mobile`= NEW.mobile;
+-- -- Dumping structure for trigger [dev]_totalmembership.entries_after_insert
+-- SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_UNSIGNED_SUBTRACTION';
+-- DELIMITER //
+-- CREATE TRIGGER `entries_after_insert` BEFORE INSERT ON `membership_entries` FOR EACH ROW BEGIN
+-- 	INSERT INTO `[dev]_tvouch332`.bdaysend (`promo_id`, `mobile`, `detail_id`)
+-- 	SELECT 2, NEW.mobile, id FROM `[dev]_tvouch332`.details,
+-- 	(
+-- 		SELECT `md5` FROM `[dev]_totalmembership`.membership_details
+-- 		WHERE `[dev]_totalmembership`.membership_details.id = NEW.detail_id
+-- 	) te
+-- 	WHERE `[dev]_tvouch332`.details.`md5` = te.`md5`
+-- 	ON DUPLICATE KEY UPDATE `mobile`= NEW.mobile;
 
-	INSERT INTO `rep_daily` (`date`, `unique`) VALUES (CURDATE(), 1)
-	ON DUPLICATE KEY UPDATE `unique` = `unique` + 1;
-END//
-DELIMITER ;
-SET SQL_MODE=@OLDTMP_SQL_MODE;
+-- 	INSERT INTO `rep_daily` (`date`, `unique`) VALUES (CURDATE(), 1)
+-- 	ON DUPLICATE KEY UPDATE `unique` = `unique` + 1;
+-- END//
+-- DELIMITER ;
+-- SET SQL_MODE=@OLDTMP_SQL_MODE;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
