@@ -38,13 +38,13 @@
             <div class="scroll-container">
               <h6>
                 PROMO MECHANICS <br />
-                Promo duration: May 1 to December 31, 2023
+                Promo duration: May 1 to December 31, 2024
               </h6>
               <ol type="I">
                 <li>PROMO COUPONS</li>
                 <ol>
                   <li>
-                    The promo runs from May 1 to December 31, 2023 and is open to all Total Philippines customers who are 18 years old and above.
+                   The promo runs from May 1 to December 31, 2023 (extended until December 31, 2024 as approved by DTI FTEB) and is open to all Total Philippines customers who are 18 years old and above.
                   </li>
                   <li>
                     Customers can register even without prior purchase.

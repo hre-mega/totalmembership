@@ -98,7 +98,7 @@
           <div class="modal-body modalSpinWheel" id="modalSpinWheel">
             <br />
             <p class="txt-instruction-spin-wheel">
-            Tap "Go" for a chance to get up to P25 FUEL VOUCHER
+            Tap "Go" for a chance to get up to P50 FUEL VOUCHER
             </p>
             <br /><br /><br />
             <!-- =========================================================================== -->
