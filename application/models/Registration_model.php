@@ -104,7 +104,7 @@
             $ch = curl_init();
             // https://dev.megabots.app/tvouch332/api/release
             // https://evoucher.totalretailrewards.com/api/release
-            curl_setopt($ch, CURLOPT_URL, "https://dev.megabots.app/total_voucher/api/release");
+            curl_setopt($ch, CURLOPT_URL, "https://dev.megabots.app/tvouch332/api/release");
             curl_setopt($ch, CURLOPT_POST, 1);
             $time = time();
             // $batch = 67;
@@ -125,25 +125,39 @@
             $Date = date('Y-m-d');
 
             do {
-                $percentage = rand(1,10);
-            
-                if($percentage == 1 || $percentage == 2 || $percentage == 3 || $percentage == 4 || $percentage == 5) {
-                    $batch = 54;
-                    $voucher = "P10";
-                }
-                elseif($percentage == 6 || $percentage == 7) {
-                    $batch = 55;
-                    $voucher = "P15";
-                }
-                elseif($percentage == 8 || $percentage == 9) {
-                    $batch = 56;
-                    $voucher = "P20";
-                }
-                elseif($percentage == 10) {
-                    $batch = 57;
-                    $voucher = "P25";
-                }
+                // Define probabilities
+                $probability_p10 = 0.5; 
+                $probability_p15 = 0.2; 
+                $probability_p20 = 0.15;
+                $probability_p25 = 0.10;
+                $probability_p50 = 0.05;
 
+
+                // Generate a random number between 0 and 1
+                $randomNumber = mt_rand() / mt_getrandmax();
+
+                // Check which probability range the random number falls into
+                if ($randomNumber < $probability_p10) {
+                    // Event for $probability_p10
+                    $batch = 86;
+                    $voucher = "P10";
+                } elseif ($randomNumber < $probability_p10 + $probability_p15) {
+                    // Event for $probability_p15
+                    $batch = 87;
+                    $voucher = "P15";
+                } elseif ($randomNumber < $probability_p10 + $probability_p15 + $probability_p20) {
+                    // Event for $probability_p20
+                    $batch = 88;
+                    $voucher = "P20";
+                } elseif ($randomNumber < $probability_p10 + $probability_p15 + $probability_p20 + $probability_p25) {
+                    // Event for $probability_p25
+                    $batch = 89;
+                    $voucher = "P25";
+                } else {
+                    // Event for $probability_p50
+                    $batch = 90;
+                    $voucher = "P50";
+                }
                 $valid_code = $this->valid_code($batch);
 
             } while ($valid_code == "no code available");
