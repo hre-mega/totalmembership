@@ -42,9 +42,9 @@
                 <!-- <br> on May 1, 2023 -->
               </h4>
 
-            <?php } elseif(date('Y-m-d') > '2023-12-31'){?>
+            <?php } elseif(date('Y-m-d') > '2024-06-30'){?>
               <br><br><br><br><br><br>
-              <h1>This promo has ended on December 31, 2023</h1>
+              <h1>This promo has ended on June 30, 2024</h1>
 
             <?php } else {?>
               
@@ -168,7 +168,7 @@
                 <a href="<?= base_url()?>stations">Stations</a>
               <p id="dti">
                 Per DTI Fair Trade Permit No. FTEB-165723 Series of 2023 <br />
-                Promo Duration: May 1 - December 31, 2023
+                Promo Duration: May 1 - June 30, 2024
               </p>
             </div>
           </div>
